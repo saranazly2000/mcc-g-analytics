@@ -29,7 +29,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class FoodDetails extends AppCompatActivity {
+public class ElectronicDetails extends AppCompatActivity {
     private StorageReference mStorageRef;
     private FirebaseAnalytics mFirebaseAnalytics;
     static Date date;
@@ -37,9 +37,9 @@ public class FoodDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_food_details);
+        setContentView(R.layout.activity_electronic_details);
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
-        trackScreen("Details","FoodDetails");
+        trackScreen("Details","ElectronicDetails");
         SimpleDateFormat formatter= new SimpleDateFormat("h:mm a");
         date = new Date(System.currentTimeMillis());
         TextView name =findViewById(R.id.tv);
@@ -49,37 +49,24 @@ public class FoodDetails extends AppCompatActivity {
         String describe = "";
         Bundle extras = getIntent().getExtras();
         if(extras != null ){
-            if(extras.getString("foodName").equals("pizza")) {
-                foodName = extras.getString("foodName");
-                describe = "Pizza with vegetables, 4$";
-                mStorageRef = FirebaseStorage.getInstance().getReference().child("food images/pizza.jpg");
+            if(extras.getString("electronicName").equals("laptop hp")) {
+                foodName = extras.getString("electronicName");
+                describe = "HP’s ZBook Create G7 offers plenty of CPU and GPU muscle, RAM and SSD storage, 2000$";
+                mStorageRef = FirebaseStorage.getInstance().getReference().child("electronic images/laptop hp.jpg");
                 getImage(mStorageRef,"pizza","jpg");
             }
-            if(extras.getString("foodName").equals("Grilled chicken")) {
-                foodName = extras.getString("foodName");
-                describe = "Chicken on the grill, 6$";
-                mStorageRef = FirebaseStorage.getInstance().getReference().child("food images/Grilled chicken.jpg");
-                getImage(mStorageRef,"Grilled chicken","jpg");
+            if(extras.getString("electronicName").equals("iphone x")) {
+                foodName = extras.getString("electronicName");
+                describe = "The iPhone X features dual 12-megapixel rear cameras, an intelligent image processor and 4K video recording , 1500$";
+                mStorageRef = FirebaseStorage.getInstance().getReference().child("electronic images/iphone x.jpg");
+                getImage(mStorageRef,"iphone x","jpg");
             }
-            if(extras.getString("foodName").equals("Shrimp")) {
-                foodName = extras.getString("foodName");
-                describe = "grilled shrimp, 7$";
-                mStorageRef = FirebaseStorage.getInstance().getReference().child("food images/Shrimp.jpg");
-                getImage(mStorageRef,"Shrimp","jpg");
+            if(extras.getString("electronicName").equals("smart tv")) {
+                foodName = extras.getString("electronicName");
+                describe = "Supports 4K technology, 60 inches, 1000$";
+                mStorageRef = FirebaseStorage.getInstance().getReference().child("electronic images/smart tv.jpg");
+                getImage(mStorageRef,"smart tv","jpg");
             }
-            if(extras.getString("foodName").equals("Shawarma")) {
-                foodName = extras.getString("foodName");
-                describe = "Fresh veal shawarma, 4$";
-                mStorageRef = FirebaseStorage.getInstance().getReference().child("food images/Shawarma.jpg");
-                getImage(mStorageRef,"Shawarma","jpg");
-            }
-            if(extras.getString("foodName").equals("Macaroni")) {
-                foodName = extras.getString("foodName");
-                describe = "Macaroni Bechamel, 5$";
-                mStorageRef = FirebaseStorage.getInstance().getReference().child("food images/Macaroni.jpg");
-                getImage(mStorageRef,"Macaroni","jpg");
-            }
-
         }
         name.setText(foodName);
         dec.setText(describe);
@@ -106,7 +93,6 @@ public class FoodDetails extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
     public void saveTime(Date date, String screenName){
         SimpleDateFormat formatter= new SimpleDateFormat("h:mm a");
         Date date1 = new Date(System.currentTimeMillis());
@@ -133,8 +119,8 @@ public class FoodDetails extends AppCompatActivity {
         Toast.makeText(this,"saved",Toast.LENGTH_SHORT).show();
     }
     public void back(View v){
-        saveTime(date,"Food Details");
-        Intent intent = new Intent(FoodDetails.this, MainActivity.class);
+        saveTime(date,"Electronic Details");
+        Intent intent = new Intent(ElectronicDetails.this, MainActivity.class);
         startActivity(intent);
     }
 

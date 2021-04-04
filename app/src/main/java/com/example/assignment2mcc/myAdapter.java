@@ -12,18 +12,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder>  {
-    private List<Model> foodList;
+    private List<Model> productList;
     //private Context mcontext;
     private RecyclerViewClickListener listener;
 
 
     public myAdapter(List<Model> foodList, RecyclerViewClickListener listener) {
-        this.foodList = foodList;
+        this.productList = foodList;
         this.listener = listener;
     }
 
     public myAdapter(List<Model> foodList) {
-        this.foodList = foodList;
+        this.productList = foodList;
        // this.mcontext =  context;    OnCompleteListener<QuerySnapshot> context
     }
 
@@ -39,13 +39,13 @@ public class myAdapter extends RecyclerView.Adapter<myAdapter.ViewHolder>  {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Model food =foodList.get(position);
+        Model food =productList.get(position);
         holder.name.setText(food.getName());
     }
 
     @Override
     public int getItemCount() {
-            return foodList.size();
+            return productList.size();
     }
     public  class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public TextView name;

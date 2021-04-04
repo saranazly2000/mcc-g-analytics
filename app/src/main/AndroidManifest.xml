@@ -3,6 +3,7 @@
     package="com.example.assignment2mcc">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Assignment2MCC">
-        <activity android:name=".ElectronicActivity"></activity>
+        <activity android:name=".ElectronicDetails"></activity>
+        <activity android:name=".ClothesDetails" />
+        <activity android:name=".ElectronicActivity" />
         <activity android:name=".ClothesActivity" />
         <activity android:name=".FoodDetails" />
         <activity android:name=".FoodActivity" />
